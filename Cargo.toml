@@ -1,0 +1,56 @@
+[workspace]
+members = ["server"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["LLM Inference Team"]
+license = "MIT"
+repository = "https://github.com/KanaparthySaiSreekar/High-Performance-LLM-Inference-Server-in-Rust"
+
+[workspace.dependencies]
+# ML Framework - Candle by Hugging Face
+candle-core = "0.7"
+candle-nn = "0.7"
+candle-transformers = "0.7"
+
+# Async Runtime
+tokio = { version = "1.40", features = ["full"] }
+tokio-util = "0.7"
+
+# HTTP Server
+axum = { version = "0.7", features = ["macros"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace", "compression-gzip"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# CLI and Configuration
+clap = { version = "4.5", features = ["derive", "env"] }
+toml = "0.8"
+
+# Logging and Tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Error Handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Utilities
+uuid = { version = "1.10", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+bytes = "1.7"
+futures = "0.3"
+
+# Memory Management
+memmap2 = "0.9"
+
+# Metrics
+prometheus = "0.13"
+
+# Testing
+criterion = "0.5"

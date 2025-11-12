@@ -1,0 +1,64 @@
+# Example configuration file for LLM Inference Server
+# Copy this file to config.toml and adjust settings as needed
+
+# Server settings
+host = "0.0.0.0"
+port = 8080
+
+# Model configuration
+[model]
+# Path to model files (local directory or HuggingFace model ID with hf:// prefix)
+# Examples:
+#   - "./models/llama-7b"
+#   - "hf://meta-llama/Llama-2-7b-hf"
+path = "./models/my-model"
+
+# Model architecture (llama, mistral, phi, etc.)
+architecture = "llama"
+
+# Optional: path to tokenizer file
+# If not specified, will use tokenizer.json in the model directory
+tokenizer_path = "./models/my-model/tokenizer.json"
+
+# Device to use: cpu, cuda, metal
+device = "cpu"
+
+# Quantization: none, q4_0, q4_1, q8_0
+# Lower bit quantization reduces memory usage and increases speed
+quantization = "none"
+
+# Inference settings
+[inference]
+# Maximum sequence length the model supports
+max_seq_len = 2048
+
+# Default generation parameters (can be overridden per request)
+default_temperature = 0.7
+default_top_p = 0.9
+default_top_k = 50
+default_max_tokens = 256
+
+# Performance settings
+[performance]
+# Maximum number of requests to batch together
+max_batch_size = 16
+
+# Number of worker threads for inference
+workers = 4
+
+# Maximum number of requests in queue
+queue_capacity = 100
+
+# Enable KV cache for faster inference
+enable_kv_cache = true
+
+# Logging settings
+[logging]
+# Log level: trace, debug, info, warn, error
+level = "info"
+
+# Enable Prometheus metrics endpoint at /metrics
+enable_metrics = true
+
+# Output logs in JSON format
+json_output = false
