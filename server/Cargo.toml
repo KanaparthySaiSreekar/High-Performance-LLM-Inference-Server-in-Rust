@@ -1,0 +1,64 @@
+[package]
+name = "llm-inference-server"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "llm-server"
+path = "src/main.rs"
+
+[dependencies]
+# ML Framework
+candle-core = { workspace = true }
+candle-nn = { workspace = true }
+candle-transformers = { workspace = true }
+
+# Async Runtime
+tokio = { workspace = true }
+tokio-util = { workspace = true }
+
+# HTTP Server
+axum = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# CLI and Configuration
+clap = { workspace = true }
+toml = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+# Error Handling
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# Utilities
+uuid = { workspace = true }
+chrono = { workspace = true }
+bytes = { workspace = true }
+futures = { workspace = true }
+memmap2 = { workspace = true }
+prometheus = { workspace = true }
+
+# Additional dependencies
+hf-hub = "0.3"
+safetensors = "0.4"
+lazy_static = "1.4"
+rand = "=0.8.5"
+tokio-stream = "0.1"
+
+[dev-dependencies]
+criterion = { workspace = true }
+
+[[bench]]
+name = "inference_bench"
+harness = false
